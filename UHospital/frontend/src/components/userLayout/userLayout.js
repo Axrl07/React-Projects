@@ -3,6 +3,7 @@ import { UserContext } from "../../App.js";
 import PacienteNav from '../navbars/pacienteNav/pacienteNav';
 import MedicoNav from '../navbars/medicoNav/medicoNav';
 import EnfermeriaNav from '../navbars/enfermeriaNav/enfermeraNav';
+import { Outlet } from "react-router-dom";
 
 function UserLayout() {
 
@@ -22,7 +23,7 @@ function UserLayout() {
     return (
         <>
             {navbar}
-            <div>user layout</div>
+            < Outlet />
         </>
     );
 }
