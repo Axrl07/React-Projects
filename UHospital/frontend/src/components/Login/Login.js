@@ -1,40 +1,45 @@
 import styles from './Login.module.css';
+import { useNavigate } from 'react-router-dom';
 
 function Login(props) {
+    const navigate = useNavigate();
+
     const handleIngresar = async (e) => {
         e.preventDefault();
+
         const form = e.target;
         const formData = new FormData(form);
+
         const response = await fetch('http://localhost:4000/auth/login', {
             method: 'POST',
             headers: {
-                'enctype': 'multipart/form-data'
+                'enctype': 'multipart/form-data',
             },
             body: formData
         })
-
         const data = await response.json();
+
         if (response.status !== 200) {
             alert(data.error);
             return;
-        }else{
-            alert("Bienvenido");
         }
 
-        /*
-        props.setUser(data.user);
-        switch (data.user.tipo) {
+        props.setUsuario(data.usuario);
+        switch (data.usuario.tipoUsuario) {
             case "paciente":
-                break;
-            case "medico":
+                navigate('/paciente')
                 break;
             case "enfermeria":
-        } */
-        
+                navigate('/enfermeria')
+                break;
+            case "medico":
+                navigate('/medico')
+                break;
+        }
     }
 
     return (
-        <form onSubmit={handleIngresar} className={styles.formContainer}>
+        <form onSubmit={handleIngresar} className={styles.formContainer} encType="multipart/form-data">
             <div>
                 <h1 className={styles.h1}> Inicio de sesión </h1>
             </div>

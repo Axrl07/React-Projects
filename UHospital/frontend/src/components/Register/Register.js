@@ -22,14 +22,6 @@ function Registro() {
             return;
         }
     }
-    const blockButtom = (e) => {
-        e.preventDefault();
-        if (e.target.value === "m" || e.target.value === "f") {
-            document.getElementById("inputDate").disabled = false;
-        } else {
-            document.getElementById("inputDate").disabled = true;
-        }
-    }
     return (
         <form onSubmit={handleRegistrar} className={styles.formContainer}>
             <div>

@@ -4,12 +4,12 @@ usuarios = [
         id: "09a70d0a-4f72-4538-90ff-3bf1bd4191a2",
         nombre: "Angel Enrique",
         apellido: "Alvarado Ruiz",
-        usuario: "m.angel",
+        usuario: "angel",
         genero: 'm',
-        clave: "medicoAngel",
+        clave: "123",
         fechaNacimiento: "01-05-2000",
         telefono: "1010 0001",
-        tipo: "medico",
+        tipoUsuario: "medico"
     },
     {
         id: "b57dbdf2-1834-4758-ac5b-46ff278978fd",
@@ -20,7 +20,7 @@ usuarios = [
         fechaNacimiento: "20-06-1999",
         clave: "medicoSamantha",
         telefono: "1010 0002",
-        tipo: "medico",
+        tipoUsuario: "medico"
     },
     // enfermeria
     {
@@ -32,7 +32,7 @@ usuarios = [
         fechaNacimiento: "05-01-2000",
         clave: "enfermeriaMaria",
         telefono: "9898 0001",
-        tipo: "enfermeria",
+        tipoUsuario: "enfermeria"
     },
     {
         id: "c66b8a2c-fdb3-492d-a1b6-210f7c1b8459",
@@ -41,9 +41,9 @@ usuarios = [
         usuario: "f.jose",
         genero: 'm',
         fechaNacimiento: "31-12-1999",
-        clave: "enfermeriaJose",
+        clave: "123",
         telefono: "9898 0002",
-        tipo: "enfermeria",
+        tipoUsuario: "enfermeria"
     },
     // pacientes
     {
@@ -53,9 +53,9 @@ usuarios = [
         usuario: "p.melisa",
         genero: 'f',
         fechaNacimiento: "10-04-1980",
-        clave: "pacienteMelisa",
+        clave: "123",
         telefono: "1234 1234",
-        tipo: "paciente",
+        tipoUsuario: "paciente"
     }
 ]
 

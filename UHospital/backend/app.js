@@ -20,6 +20,6 @@ app.get("/", (req, res) => {
 });
 
 app.use('/auth', require('./routes/auth.routes.js'));
-//app.use('/user', require('./routes/user.routes.js'));
+
 
 module.exports = app;

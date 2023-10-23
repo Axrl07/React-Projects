@@ -7,9 +7,9 @@ const router = express.Router();
 router.post("/login", (req, res) => {
   const user = req.body.userName;
   const pwd = req.body.userPwd;
-  for (u of appData.usuarios) {
-    if (u.usuario === user && u.clave === pwd) {
-      return res.status(200).json({ u });
+  for (usuario of appData.usuarios) {
+    if (usuario.usuario === user && usuario.clave === pwd) {
+      return res.status(200).json({ usuario: usuario });
     }
   }
   return res.status(400).json({ error: "datos incorrectos" });
@@ -38,7 +38,7 @@ router.post("/register", (req, res) => {
     fechaNacimiento: birthDate,
     clave: pwd,
     telefono: cellphone,
-    tipo: "paciente"
+    tipoUsuario: "paciente"
   });
   return res.status(200).json({ msg: "usuario creado" });
 });
