@@ -3,7 +3,9 @@ import { useNavigate } from 'react-router-dom';
 
 function Login(props) {
     const navigate = useNavigate();
-
+    const handleRegistro = () => {
+        navigate('/registro');
+    }
     const handleIngresar = async (e) => {
         e.preventDefault();
 
@@ -53,7 +55,7 @@ function Login(props) {
             </div>
             <div class="d-grid gap-2">
                 <button type="submit" class="btn btn-success">Ingresar</button>
-                <button type="button" class="btn btn-success">Registrarse</button>
+                <button onClick={handleRegistro} class="btn btn-success">Registrarse</button>
             </div>
         </form>
     );

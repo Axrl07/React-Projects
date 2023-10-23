@@ -1,6 +1,13 @@
 import styles from "./Register.module.css";
+import { useNavigate } from 'react-router-dom';
 
 function Registro() {
+    const navigate = useNavigate();
+
+    const handleLogin = () => {
+        navigate('/login');
+    }
+
     const handleRegistrar = async (e) => {
         e.preventDefault();
         const form = e.target;
@@ -15,6 +22,7 @@ function Registro() {
 
         const data = await response.json();
         if (response.status === 200) {
+            navigate('/login');
             alert(data.msg);
             return;
         }else{
@@ -76,6 +84,7 @@ function Registro() {
             </div>
             <div class="d-grid gap-2">
                 <button type="submit" class="btn btn-success"> Registrarse </button>
+                <button onClick={handleLogin} class="btn btn-success"> Regresar al Login </button>
             </div>
         </form>
     );

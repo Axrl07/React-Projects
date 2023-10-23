@@ -16,7 +16,7 @@ function App() {
                 // ruta login
                 <Route path="/" element={<Login setUsuario={setUsuario} />} />
                 <Route path="/login" element={<Login setUsuario={setUsuario} />} />
-                <Route path="/registro" element={<Register />} /> 
+                <Route path="/registro" element={<Register />} />
 
                 // ruta paciente
                 <Route path="/paciente" element={<UserLayout />} />
