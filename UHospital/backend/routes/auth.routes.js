@@ -25,22 +25,22 @@ router.post("/register", (req, res) => {
   const cellphone = req.body.cellphone;
   const id = uuidv4();
   for (u of appData.usuarios) {
-    if (u.usuario !== user) {
-      appData.usuarios.push({
-        id: id,
-        nombre: name,
-        apellido: lastName,
-        usuario: user,
-        genero: genre,
-        fechaNacimiento: birthDate,
-        clave: pwd,
-        telefono: cellphone,
-        tipo: "paciente"
-      });
-      return res.status(200).json({ msg: "usuario creado" });
+    if (u.usuario === user) {
+      return res.status(400).json({ error: "usuario ya existe" });
     }
   }
-  return res.status(400).json({ error: "usuario ya existe" });
+  appData.usuarios.push({
+    id: id,
+    nombre: name,
+    apellido: lastName,
+    usuario: user,
+    genero: genre,
+    fechaNacimiento: birthDate,
+    clave: pwd,
+    telefono: cellphone,
+    tipo: "paciente"
+  });
+  return res.status(200).json({ msg: "usuario creado" });
 });
 
 module.exports = router;
