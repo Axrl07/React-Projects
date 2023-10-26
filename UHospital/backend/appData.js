@@ -85,70 +85,80 @@ medicamentos = [
         nombre: "Ivermectina",
         descripcion: "Es un compuesto medicinal que su utiliza en forma de comprimido o gotas que se ingieren por la vía oral.",
         precio: 12.50,
-        cantidadDisponible: 20
+        cantidadDisponible: 50,
+        cantidadVendida: 0
     },
     {
         idMedicamento: "191b1059-876a-4a68-a83e-3624cb568e09",
         nombre: "Oseltamivir",
         descripcion: "Es un antiviral muy utilizado para tratar la gripe común.",
         precio: 25.75,
-        cantidadDisponible: 10
+        cantidadDisponible: 45,
+        cantidadVendida: 0
     },
     {
         idMedicamento: "c762244a-8d1e-4e6b-949a-3a0f90dbd40a",
         nombre: "Dexametasona",
         descripcion: "Es un medicamento potente similar a las hormonas de asteroides, se utiliza como antiinflamatorio para el tratamiento de inflamaciones o enfermedades autoinmunes.",
         precio: 15.00,
-        cantidadDisponible: 15
+        cantidadDisponible: 40,
+        cantidadVendida: 0
     },
     {
         idMedicamento: "e454052a-2387-444c-9f91-25f2071c9b2e",
         nombre: "Simvastatina",
         descripcion: "Fue desarrollada por Merck y reduce el colesterol y los triglicéridos que hay en la sangre.",
         precio: 12.50,
-        cantidadDisponible: 20
+        cantidadDisponible: 35,
+        cantidadVendida: 0
     },
     {
         idMedicamento: "90eac427-5285-4c51-91d6-62e5c84ce9a0",
         nombre: "Aspirina",
         descripcion: "Es un ácido acetil-salicílico que reduce la mayoría de los malestares y los más comunes son: dolor, fiebre e inflamación.",
         precio: 25.75,
-        cantidadDisponible: 10
+        cantidadDisponible: 5,
+        cantidadVendida: 0
     },
     {
         idMedicamento: "f853a598-e971-42a8-8908-533905cdbf02",
         nombre: "Omeprazol",
         descripcion: "Cura la acidez del estómago reduciendo  las úlceras existentes en el esófago, estómago y duodeno.",
         precio: 15.00,
-        cantidadDisponible: 15
+        cantidadDisponible: 10,
+        cantidadVendida: 0
     },
     {
         idMedicamento: "dc1d06f7-0cb9-44d2-95c7-193652bafe8d",
         nombre: "Ramipril",
         descripcion: "Trata la presión arterial alta y debe ser consumida con receta médica.",
         precio: 12.50,
-        cantidadDisponible: 20
+        cantidadDisponible: 15,
+        cantidadVendida: 0
     },
     {
         idMedicamento: "0f07a448-2167-4752-b507-6cb805ae526c",
         nombre: "Lexotiroxina sódica",
         descripcion: "Funge como una versión artificial de la hormono tiroxina que aumenta la tasa metabólica de las células de todos los tejidos del organismo y mantiene la función cerebral.",
         precio: 25.75,
-        cantidadDisponible: 10
+        cantidadDisponible: 20,
+        cantidadVendida: 0
     },
     {
         idMedicamento: "c7608f44-07fd-4d7a-9f45-132d829588b3",
         nombre: "Amlodipina",
         descripcion: "Mejora el flujo de la sangre, mejora la presión arterial, además trata la hipertensión y debe utilizarse con receta médica.",
         precio: 15.00,
-        cantidadDisponible: 15
+        cantidadDisponible: 25,
+        cantidadVendida: 0
     },
     {
         idMedicamento: "c85d141e-ee22-4f7e-a8e1-6cf1c908bbe7",
         nombre: "Paracetamol",
         descripcion: "Se ocupa para reducir los malestares de: fiebres, dolor de cabeza, dolores musculares, artritis, dolor de espalda o resfriados.",
         precio: 12.50,
-        cantidadDisponible: 20
+        cantidadDisponible: 30,
+        cantidadVendida: 0
     }
 ]
 

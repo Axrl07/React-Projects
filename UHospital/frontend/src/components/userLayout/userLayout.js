@@ -1,14 +1,13 @@
 import { useContext } from "react";
 import { UserContext } from "../../App.js";
-import PacienteNav from '../navbars/pacienteNav/pacienteNav';
-import MedicoNav from '../navbars/medicoNav/medicoNav';
-import EnfermeriaNav from '../navbars/enfermeriaNav/enfermeraNav';
+import PacienteNav from './pacientes/pacienteNav.jsx';
+import MedicoNav from './medico/medicoNav.jsx';
+import EnfermeriaNav from './enfermeria/enfermeraNav.jsx';
 import { Outlet } from "react-router-dom";
 
 function UserLayout() {
 
     const usuario = useContext(UserContext);
-
     let navbar = <PacienteNav />;
     switch(usuario.tipoUsuario){
         case "medico":
