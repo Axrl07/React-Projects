@@ -3,6 +3,7 @@ const appData = require("../appData.js");
 const router = express.Router();
 const { v4: uuidv4 } = require('uuid');
 
+// modificar datos
 router.put("/actualizarDatos", (req, res) => {
   const { id, userName, userPwd, name, lastName, birthDate, genre, cellphone,} = req.body;
 
@@ -21,17 +22,12 @@ router.put("/actualizarDatos", (req, res) => {
   return res.status(200).json({ usuario: usuario });
 });
 
-router.get('/stockMedicamentos', (req, res) => {
-  const medicamentos = appData.medicamentos.filter(medicamento => {
-    return medicamento.cantidadDisponible > 0;
-  });
-  return res.status(200).json({ medicamentos: medicamentos });
-})
-
+// realizar compras
 router.put('/comprar', (req, res) => {
   const { idUsuario, medicamentos } = req.body;
 
   const compras = [];
+  let total = 0;
 
   medicamentos.forEach((medicamentoCompra) => {
     const { idMedicamento, cantidad } = medicamentoCompra;
@@ -49,9 +45,12 @@ router.put('/comprar', (req, res) => {
     medicamento.cantidadVendida += cantidad;
 
     // Agregar nombre del medicamento y cantidad comprados a la lista
+    total = total + (medicamento.precio * cantidad);
     compras.push({
       nombreMedicamento: medicamento.nombre,
+      precioUnitario: medicamento.precio,
       cantidadComprada: cantidad,
+      subtotal: medicamento.precio * cantidad,
     });
   });
 
@@ -60,6 +59,7 @@ router.put('/comprar', (req, res) => {
     idPedido: uuidv4(),
     fecha: new Date().toISOString().slice(0, 10),
     idUsuario: idUsuario,
+    totalCompras: total,
     compras: compras
   };
 
@@ -67,21 +67,88 @@ router.put('/comprar', (req, res) => {
 
   return res.status(200).json({ msg: "Compra realizada con éxito" });
 });
+router.get('/stockMedicamentos', (req, res) => {
+  const medicamentos = appData.medicamentos.filter(medicamento => {
+    return medicamento.cantidadDisponible > 0;
+  });
+  return res.status(200).json({ medicamentos: medicamentos });
+})
 
+// obtener medicinas
+// router.get('/medicinasInfo/:idMedicamento', (req, res) => {
+//   const medicamentos = appData.medicamentos.map(medicamento => {
+//     return {
+//       idMedicamento: medicamento.idMedicamento,
+//       nombre: medicamento.nombre,
+//       precio: medicamento.precio,
+//       cantidadDisponible: medicamento.cantidadDisponible,
+//       cantidadVendida: medicamento.cantidadVendida,
+//     }
+//   });
+//   return res.status(200).json({ medicamentos: medicamentos });
+// });
+// stock de medicinas disponibles
+
+// ver compras hechas por el usuario
 router.get('/pedidos/:idUsuario', (req, res) => {
   const { idUsuario } = req.params;
 
-  const pedidos = appData.pedidos.filter(pedido => pedido.idUsuario === idUsuario);
-  return res.status(200).json({ pedidos: pedidos });
-})
-
-router.get('/compras:id', (req, res) => {
-  const compras = appData.pedidos.filter(compra => {
-    return compra.idUsuario === req.params;
+  const pedidos = appData.pedidos.filter((pedido) => {
+    return pedido.idUsuario === idUsuario && pedido.compras.length > 0;
   });
-  return res.status(200).json({ compras: compras });
-})  
 
+  if (pedidos.length > 0) {
+    return res.status(200).json({ pedidos: pedidos });
+  } else {
+    return res.status(404).json({ error: 'No se encontraron pedidos con compras para este usuario.' });
+  }
+});
+
+// ver recetas
+router.get('/recetas/:idUsuario', (req, res) => {
+  const { idUsuario } = req.params;
+
+  const recetasUser = appData.recetas.filter((receta) => {
+    return receta.idUsuario === idUsuario;
+  });
+
+  if (recetasUser.length > 0) {
+    return res.status(200).json({ recetas: recetas });
+  } else {
+    return res.status(400).json({ error: 'No se encontraron recetas para este usuario.' });
+  }
+});
+// solicitar citas
+router.post('/solicitarCitas', (req, res) => {
+  const { idUsuario, fecha, hora, motivo } = req.body;
+
+  const cita = {
+    idCita: uuidv4(),
+    fecha: fecha,
+    hora: hora,
+    motivo: motivo,
+    estado: 'pendiente',
+    idUsuario: idUsuario
+  };
+
+  appData.citas.push(cita);
+
+  return res.status(200).json({ msg: 'Cita solicitada con éxito' });
+});
+// ver estado citas
+router.get('/verCitas/:idUsuario', (req, res) => {
+  const { idUsuario } = req.params;
+
+  const citasUser = appData.citas.filter((cita) => {
+    return cita.idUsuario === idUsuario;
+  });
+
+  if (citasUser.length > 0) {
+    return res.status(200).json({ citas: citasUser });
+  } else {
+    return res.status(400).json({ error: 'No se encontraron citas para este usuario.' });
+  }
+});
 
 
 module.exports = router;

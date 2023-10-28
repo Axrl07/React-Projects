@@ -9,7 +9,8 @@ import UserLayout from './components/userLayout/userLayout';
 import Modificar from './components/userLayout/pacientes/modificar';
 import VerUsuario from './components/userLayout/pacientes/verUsuario';
 import VerRecetas from './components/userLayout/pacientes/verRecetas';
-import CitasPaciente from './components/userLayout/pacientes/citasPaciente';
+import VerCitas from './components/userLayout/pacientes/verCitas';
+import SolicitarCita from './components/userLayout/pacientes/solicitarCita';
 import ComprasMedicamento from './components/userLayout/pacientes/comprasMedicamento';
 import VerCompras from './components/userLayout/pacientes/verCompras';
 
@@ -45,23 +46,24 @@ function App() {
                 <Route path="/login" element={<Login setUsuario={setUsuario} />} />
                 <Route path="/registro" element={<Register />} />
 
-                // ruta paciente
+                // rutas paciente
                 <Route path="/paciente" element={<UserLayout />}>
                     <Route index element={<VerUsuario />} />
                     <Route path="modificarUsuario" element={<Modificar setUsuario={setUsuario} />} />
                     <Route path="verRecetas" element={<VerRecetas />} />
-                    <Route path="citasPaciente" element={<CitasPaciente />} />
+                    <Route path="VerCitas" element={<VerCitas />} />
+                    <Route path="SolicitarCita" element={<SolicitarCita />} />
                     <Route path="comprasMedicamento" element={<ComprasMedicamento />} />
                     <Route path="verCompras" element={<VerCompras />} />
                 </Route>
 
-                // ruta enfermeria
+                // rutas enfermeria
                 <Route path="/enfermeria" element={<UserLayout />}>
                     {/* 
                     <Route path="gestionCitas" element={<GestionCitas />} /> */}
                 </Route>
 
-                // ruta medico
+                // rutas medico
                 <Route path="/medico" element={<UserLayout />}>
                     {/* <Route path="atencionCitas" element={<AtencionCitas />} /> */}
                     {/* <Route path="trabajandoCita" element={<TrabajandoCita />} */}

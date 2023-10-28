@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import { UserContext } from "../../../App.js";
 
-function CitasPaciente() {
+function SolicitarCitas() {
   const usuario = useContext(UserContext);
   return (
     <div>
-      <h1>Citas Paciente</h1>
+      <h1>Solicitar cita</h1>
       <h2>{usuario.nombre}</h2>
     </div>
   );
 }
-export default CitasPaciente;
+export default SolicitarCitas;

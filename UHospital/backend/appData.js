@@ -59,7 +59,7 @@ usuarios = [
     }
 ]
 
-cita = [
+citas = [
     {
         idCita: "19af3107-d6db-492a-9c2e-bf105e7764c9",
         fecha: "2021-05-01",
@@ -71,6 +71,46 @@ cita = [
 ]
 
 pedidos = [
+    {
+        "idPedido": "768df68a-f5fa-4f84-9ba6-2d9f82f022d9",
+        "fecha": "2023-10-28",
+        "idUsuario": "e393b1cc-6a9d-4359-958b-dc46029c5912",
+        "totalCompras": 753.75,
+        "compras": [
+            {
+                "nombreMedicamento": "Ivermectina",
+                "precioUnitario": 12.5,
+                "cantidadComprada": 50,
+                "subtotal": 625
+            },
+            {
+                "nombreMedicamento": "Aspirina",
+                "precioUnitario": 25.75,
+                "cantidadComprada": 5,
+                "subtotal": 128.75
+            }
+        ]
+    },
+    {
+        "idPedido": "eff085d6-34c2-4a14-bbe9-09bba29cafed",
+        "fecha": "2023-10-28",
+        "idUsuario": "e393b1cc-6a9d-4359-958b-dc46029c5912",
+        "totalCompras": 1248.75,
+        "compras": [
+            {
+                "nombreMedicamento": "Oseltamivir",
+                "precioUnitario": 25.75,
+                "cantidadComprada": 45,
+                "subtotal": 1158.75
+            },
+            {
+                "nombreMedicamento": "Dexametasona",
+                "precioUnitario": 15,
+                "cantidadComprada": 6,
+                "subtotal": 90
+            }
+        ]
+    }
 ]
 
 medicamentos = [
@@ -148,7 +188,7 @@ medicamentos = [
     }
 ]
 
-receta = [
+recetas = [
     {
         idReceta: "03e07033-fb5f-49fc-a2ca-768bf9c8759a",
         fecha: "2021-05-01",
@@ -165,6 +205,6 @@ module.exports = {
     usuarios,
     pedidos,
     medicamentos,
-    cita,
-    receta
+    citas,
+    recetas
 }

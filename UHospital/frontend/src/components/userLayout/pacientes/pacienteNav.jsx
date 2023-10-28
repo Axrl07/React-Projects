@@ -21,19 +21,27 @@ function PacienteNav() {
                             <li class="nav-item">
                                 <Link to="/paciente">Inicio</Link>
                             </li>
+                            <li>
+                                <Link to="/paciente/modificarUsuario" >Modificar perfil</Link>
+                            </li>
+                            <li><hr class="divider" /></li>
                             <li class="nav-item">
                                 <Link to="/paciente/verRecetas">Ver Recetas</Link>
                             </li>
+                            <li><hr class="divider" /></li>
                             <li class="nav-item">
-                                <Link to="/paciente/citasPaciente">Solicitar una Cita</Link>
+                                <Link to="/paciente/SolicitarCita">Solicitar una Cita</Link>
                             </li>
+                            <li class="nav-item">
+                                <Link to="/paciente/VerCitas">Ver Citas</Link>
+                            </li>
+                            <li><hr class="divider" /></li>
                             <li class="nav-item">
                                 <Link to="/paciente/comprasMedicamento">Comprar Medicamentos</Link>
                             </li>
                             <li class="nav-item">
                                 <Link to="/paciente/verCompras">Ver Compras</Link>
                             </li>
-                            <li><Link to="/paciente/modificarUsuario" >Modificar perfil</Link></li>
                             <li><hr class="divider" /></li>
                             <li><Link to="/login" >Cerrar Sesión</Link></li>
                         </ul>

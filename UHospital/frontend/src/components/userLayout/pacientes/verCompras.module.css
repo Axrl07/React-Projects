@@ -32,6 +32,23 @@
     align-items: justify;
 }
 
+.item{
+    background-color: whitesmoke;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 100%;
+    align-items: center;
+    text-align: center;
+}
+
+.itemSecond{
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    align-items: center;
+    text-align: center;
+}
 
 .header{
     display: grid;
