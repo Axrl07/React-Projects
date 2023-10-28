@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, Link } from "react";
 import { UserContext } from "../../../App.js";
 import { useNavigate } from "react-router-dom";
 import styles from './modificar.module.css';
@@ -6,16 +6,16 @@ import styles from './modificar.module.css';
 function Modificar(props) {
     const navigate = useNavigate();
     const usuario = useContext(UserContext);
+
     const handleInicio = () => {
         navigate('/paciente');
     }
-
     const handleActualizarDatos = async (e) => {
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
         const response = await fetch('http://localhost:4000/paciente/actualizarDatos', {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 'enctype': 'multipart/form-data'
             },
@@ -24,23 +24,30 @@ function Modificar(props) {
 
         const data = await response.json();
 
-        props.setUsuario(data.usuario)
+        props.setUsuario(data.usuario);
+
         if (response.status === 200) {
             alert(data.usuario);
+            handleInicio();
             return;
         }else{
             alert(data.error);
             return;
         }
     }
+
     return (
         <form onSubmit={handleActualizarDatos} className={styles.formContainer}>
             <div>
                 <h1 className={styles.h1}> Actualización de datos de usuario </h1>
             </div>
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default"> ID del paciente </span>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="id" value={usuario.id} />
+            <div class="row g-2 mb-3">
+                <div class="col-md">
+                    <span class="input-group-text" id="inputGroup-sizing-default"> ID del paciente:</span>
+                </div>
+                <div class="col-md">
+                    <input class="form-control" type="text" value={usuario.id} aria-label="readonly input example" name="id" readonly />
+                </div>
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default"> Nombres </span>
@@ -90,8 +97,8 @@ function Modificar(props) {
                 <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="cellphone" placeholder={usuario.telefono} required />
             </div>
             <div class="d-grid gap-2">
-                <button type="submit" class="btn btn-success"> Registrarse </button>
-                <button onClick={handleInicio} class="btn btn-success"> Regresar al Login </button>
+                <button type="submit" class="btn btn-success"> Actualiar datos </button>
+                <buttom onClick={handleInicio} class="btn btn-success"> Regresar al inicio </buttom>
             </div>
         </form>
     );

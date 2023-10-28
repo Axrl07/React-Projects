@@ -30,17 +30,12 @@ function PacienteNav() {
                             <li class="nav-item">
                                 <Link to="/paciente/comprasMedicamento">Comprar Medicamentos</Link>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Opciones del Perfil
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><Link to="/paciente/verUsuario">Ver perfil</Link></li>
-                                    <li><Link to="/paciente/modificarUsuario" >Modificar perfil</Link></li>
-                                    <li><hr class="dropdown-divider" /></li>
-                                    <li><Link to="/login" >Cerrar Sesión</Link></li>
-                                </ul>
+                            <li class="nav-item">
+                                <Link to="/paciente/verCompras">Ver Compras</Link>
                             </li>
+                            <li><Link to="/paciente/modificarUsuario" >Modificar perfil</Link></li>
+                            <li><hr class="divider" /></li>
+                            <li><Link to="/login" >Cerrar Sesión</Link></li>
                         </ul>
                     </div>
                 </div>

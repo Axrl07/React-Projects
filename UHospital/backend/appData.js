@@ -50,7 +50,7 @@ usuarios = [
         id: "e393b1cc-6a9d-4359-958b-dc46029c5912",
         nombre: "Melisa Mishel",
         apellido: "Melgar Rivera",
-        usuario: "p.melisa",
+        usuario: "melisa",
         genero: 'f',
         fechaNacimiento: "10-04-1980",
         clave: "123",
@@ -71,12 +71,6 @@ cita = [
 ]
 
 pedidos = [
-    {
-        idPedido: "7f33e315-7e6e-4d11-9380-60119e11fc4b",
-        fecha: "2021-05-01",
-        registrado: false,
-        idUsuario: "e393b1cc-6a9d-4359-958b-dc46029c5912"
-    }
 ]
 
 medicamentos = [
@@ -145,29 +139,12 @@ medicamentos = [
         cantidadVendida: 0
     },
     {
-        idMedicamento: "c7608f44-07fd-4d7a-9f45-132d829588b3",
-        nombre: "Amlodipina",
-        descripcion: "Mejora el flujo de la sangre, mejora la presión arterial, además trata la hipertensión y debe utilizarse con receta médica.",
-        precio: 15.00,
-        cantidadDisponible: 25,
-        cantidadVendida: 0
-    },
-    {
         idMedicamento: "c85d141e-ee22-4f7e-a8e1-6cf1c908bbe7",
         nombre: "Paracetamol",
         descripcion: "Se ocupa para reducir los malestares de: fiebres, dolor de cabeza, dolores musculares, artritis, dolor de espalda o resfriados.",
         precio: 12.50,
         cantidadDisponible: 30,
         cantidadVendida: 0
-    }
-]
-
-medicamentoPedido = [
-    {
-        idMedicamentoPedido: "68410f29-e8b9-4046-a2f5-77b6d482bd6a",
-        cantidad: 2,
-        idMedicamento: "c85d141e-ee22-4f7e-a8e1-6cf1c908bbe7",
-        idPedido: "7f33e315-7e6e-4d11-9380-60119e11fc4b"
     }
 ]
 
@@ -188,7 +165,6 @@ module.exports = {
     usuarios,
     pedidos,
     medicamentos,
-    medicamentoPedido,
     cita,
     receta
 }

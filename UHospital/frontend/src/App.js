@@ -11,6 +11,7 @@ import VerUsuario from './components/userLayout/pacientes/verUsuario';
 import VerRecetas from './components/userLayout/pacientes/verRecetas';
 import CitasPaciente from './components/userLayout/pacientes/citasPaciente';
 import ComprasMedicamento from './components/userLayout/pacientes/comprasMedicamento';
+import VerCompras from './components/userLayout/pacientes/verCompras';
 
 // enfermeria
 // import GestionCitas from './components/userLayout/enfermeria/gestionCitas';
@@ -24,10 +25,17 @@ export const UserContext = React.createContext();
 
 // componente principal
 function App() {
-    const [usuario, setUsuario] = useState(null);
-    const [productos, setProductos] = useState([])
-    const [total, setTotal] = useState(0)
-    const [contador, setContador] = useState(0)
+    const [usuario, setUsuario] = useState({
+        id: "e393b1cc-6a9d-4359-958b-dc46029c5912",
+        nombre: "Melisa Mishel",
+        apellido: "Melgar Rivera",
+        usuario: "melisa",
+        genero: 'f',
+        fechaNacimiento: "10-04-1980",
+        clave: "123",
+        telefono: "1234 1234",
+        tipoUsuario: "paciente"
+    });
 
     return (
         <UserContext.Provider value={usuario} >
@@ -40,10 +48,11 @@ function App() {
                 // ruta paciente
                 <Route path="/paciente" element={<UserLayout />}>
                     <Route index element={<VerUsuario />} />
-                    <Route path="modificarUsuario" element={<Modificar />} />
+                    <Route path="modificarUsuario" element={<Modificar setUsuario={setUsuario} />} />
                     <Route path="verRecetas" element={<VerRecetas />} />
                     <Route path="citasPaciente" element={<CitasPaciente />} />
                     <Route path="comprasMedicamento" element={<ComprasMedicamento />} />
+                    <Route path="verCompras" element={<VerCompras />} />
                 </Route>
 
                 // ruta enfermeria
