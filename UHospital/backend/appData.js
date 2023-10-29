@@ -22,6 +22,28 @@ usuarios = [
         telefono: "1010 0002",
         tipoUsuario: "medico"
     },
+    {
+        id: "09aaad00-4f72-4538-90ff-3bf1bd4191a2",
+        nombre: "Juan Luis",
+        apellido: "Guerra",
+        usuario: "luis",
+        genero: 'm',
+        clave: "luis",
+        fechaNacimiento: "01-05-2000",
+        telefono: "2222 0000",
+        tipoUsuario: "medico"
+    },
+    {
+        id: "b57dbdf2-1834-4758-ac5b-46ff278978fd",
+        nombre: "Linda",
+        apellido: "Ortega",
+        usuario: "linda",
+        genero: 'f',
+        fechaNacimiento: "20-06-1999",
+        clave: "lindaMedico",
+        telefono: "5566 8899",
+        tipoUsuario: "medico"
+    },
     // enfermeria
     {
         id: "dd8cc520-58fc-45b9-a198-9e18c4f4cb9f",
@@ -66,30 +88,35 @@ citas = [
         hora: "10:00",
         motivo: "Dolor de cabeza",
         estado: "finalizada",
-        idUsuario: "e393b1cc-6a9d-4359-958b-dc46029c5912"
+        idUsuario: "e393b1cc-6a9d-4359-958b-dc46029c5912",
+        idMedico: "09a70d0a-4f72-4538-90ff-3bf1bd4191a2"
     },
     {
         idCita: "19af3107-d6db-492a-9c2e-bf105e7884c9",
         fecha: "2021-07-03",
         hora: "12:00",
         motivo: "acidez estomacal",
-        estado: "finalizada",
-        idUsuario: "e393b1cc-6a9d-4359-958b-dc46029c5912"
-    },{
+        estado: "aceptada",
+        idUsuario: "e393b1cc-6a9d-4359-958b-dc46029c5912",
+        idMedico: "09a70d0a-4f72-4538-90ff-3bf1bd4191a2"
+    },
+    {
         idCita: "19af3107-d6db-jklñ-9c2e-bf105e7764c9",
         fecha: "2021-05-01",
         hora: "10:00",
         motivo: "diarrea",
-        estado: "pendiente",
-        idUsuario: "e393b1cc-6a9d-4359-958b-dc46029c5912"
+        estado: "aceptada",
+        idUsuario: "e393b1cc-6a9d-4359-958b-dc46029c5912",
+        idMedico: "09a70d0a-4f72-4538-90ff-3bf1bd4191a2"
     },
     {
         idCita: "19af3107-fdaa-492a-9c2e-bf105e7884c9",
         fecha: "2021-07-03",
         hora: "12:00",
         motivo: "gripe",
-        estado: "pendiente",
-        idUsuario: "e393b1cc-6a9d-4359-958b-dc46029c5912"
+        estado: "aceptada",
+        idUsuario: "e393b1cc-6a9d-4359-958b-dc46029c5912",
+        idMedico: "b57dbdf2-1834-4758-ac5b-46ff278978fd"
     }
 ]
 
@@ -143,7 +170,7 @@ medicamentos = [
         descripcion: "Es un compuesto medicinal que su utiliza en forma de comprimido o gotas que se ingieren por la vía oral.",
         precio: 12.50,
         cantidadDisponible: 50,
-        cantidadVendida: 0
+        cantidadVendida: 20
     },
     {
         idMedicamento: "191b1059-876a-4a68-a83e-3624cb568e09",
@@ -159,7 +186,7 @@ medicamentos = [
         descripcion: "Es un medicamento potente similar a las hormonas de asteroides, se utiliza como antiinflamatorio para el tratamiento de inflamaciones o enfermedades autoinmunes.",
         precio: 15.00,
         cantidadDisponible: 40,
-        cantidadVendida: 0
+        cantidadVendida: 15
     },
     {
         idMedicamento: "e454052a-2387-444c-9f91-25f2071c9b2e",
@@ -183,7 +210,7 @@ medicamentos = [
         descripcion: "Cura la acidez del estómago reduciendo  las úlceras existentes en el esófago, estómago y duodeno.",
         precio: 15.00,
         cantidadDisponible: 10,
-        cantidadVendida: 0
+        cantidadVendida: 8
     },
     {
         idMedicamento: "dc1d06f7-0cb9-44d2-95c7-193652bafe8d",
@@ -207,7 +234,7 @@ medicamentos = [
         descripcion: "Se ocupa para reducir los malestares de: fiebres, dolor de cabeza, dolores musculares, artritis, dolor de espalda o resfriados.",
         precio: 12.50,
         cantidadDisponible: 30,
-        cantidadVendida: 0
+        cantidadVendida: 100
     }
 ]
 

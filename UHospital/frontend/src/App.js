@@ -16,17 +16,27 @@ import VerCompras from './components/userLayout/pacientes/verCompras';
 
 //enfermeria
 import GestionCitas from './components/userLayout/enfermeria/gestionCitas';
+import Reportes from './components/userLayout/enfermeria/reportes';
 
 // medico
-// import AtencionCitas from './components/userLayout/medico/atencionCitas';
-// import TrabajandoCita from './components/userLayout/medico/trabajandoCita';
+import AtencionCitas from './components/userLayout/medico/atencionCitas';
 
 // exportando contexto para usar en los componentes
 export const UserContext = React.createContext();
 
 // componente principal
 function App() {
-    const [usuario, setUsuario] = useState(null);
+    const [usuario, setUsuario] = useState({
+        id: "dd8cc520-58fc-45b9-a198-9e18c4f4cb9f",
+        nombre: "Maria Fernanda",
+        apellido: "Choc Choc",
+        usuario: "f.maria",
+        genero: 'f',
+        fechaNacimiento: "05-01-2000",
+        clave: "123",
+        telefono: "9898 0001",
+        tipoUsuario: "enfermeria"
+    });
 
     return (
         <UserContext.Provider value={usuario} >
@@ -50,12 +60,12 @@ function App() {
                 // rutas enfermeria
                 <Route path="/enfermeria" element={<UserLayout />}>
                     <Route index element={<GestionCitas />} />
+                    <Route path="Reportes" element={<Reportes />} />
                 </Route>
 
                 // rutas medico
                 <Route path="/medico" element={<UserLayout />}>
-                    {/* <Route path="atencionCitas" element={<AtencionCitas />} /> */}
-                    {/* <Route path="trabajandoCita" element={<TrabajandoCita />} */}
+                    <Route index element={<AtencionCitas />} />
                 </Route>
             </Routes>
         </UserContext.Provider>

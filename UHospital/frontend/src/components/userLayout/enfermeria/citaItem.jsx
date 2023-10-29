@@ -73,3 +73,4 @@ function CitaItem({ cita, setCitas, medicos }) {
 }
 
 export default CitaItem;
+
