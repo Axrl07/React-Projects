@@ -1,0 +1,10 @@
+.item{
+    background-color: whitesmoke;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 30% 25% 25% 20%;
+    align-items: center;
+    text-align: justify;
+}

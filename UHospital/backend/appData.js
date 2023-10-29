@@ -30,7 +30,7 @@ usuarios = [
         usuario: "f.maria",
         genero: 'f',
         fechaNacimiento: "05-01-2000",
-        clave: "enfermeriaMaria",
+        clave: "123",
         telefono: "9898 0001",
         tipoUsuario: "enfermeria"
     },
@@ -65,7 +65,7 @@ citas = [
         fecha: "2021-05-01",
         hora: "10:00",
         motivo: "Dolor de cabeza",
-        estado: "pendiente",
+        estado: "finalizada",
         idUsuario: "e393b1cc-6a9d-4359-958b-dc46029c5912"
     },
     {
@@ -73,7 +73,22 @@ citas = [
         fecha: "2021-07-03",
         hora: "12:00",
         motivo: "acidez estomacal",
-        estado: "Finalizada",
+        estado: "finalizada",
+        idUsuario: "e393b1cc-6a9d-4359-958b-dc46029c5912"
+    },{
+        idCita: "19af3107-d6db-jklñ-9c2e-bf105e7764c9",
+        fecha: "2021-05-01",
+        hora: "10:00",
+        motivo: "diarrea",
+        estado: "pendiente",
+        idUsuario: "e393b1cc-6a9d-4359-958b-dc46029c5912"
+    },
+    {
+        idCita: "19af3107-fdaa-492a-9c2e-bf105e7884c9",
+        fecha: "2021-07-03",
+        hora: "12:00",
+        motivo: "gripe",
+        estado: "pendiente",
         idUsuario: "e393b1cc-6a9d-4359-958b-dc46029c5912"
     }
 ]

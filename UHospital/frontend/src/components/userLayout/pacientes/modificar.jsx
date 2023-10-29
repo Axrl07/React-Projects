@@ -1,15 +1,15 @@
-import { useContext, Link } from "react";
+import { useContext } from "react";
 import { UserContext } from "../../../App.js";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from './modificar.module.css';
 
 function Modificar(props) {
-    const navigate = useNavigate();
     const usuario = useContext(UserContext);
-
+    const navigate = useNavigate();
     const handleInicio = () => {
         navigate('/paciente');
     }
+
     const handleActualizarDatos = async (e) => {
         e.preventDefault();
         const form = e.target;
@@ -98,7 +98,7 @@ function Modificar(props) {
             </div>
             <div class="d-grid gap-2">
                 <button type="submit" class="btn btn-success"> Actualiar datos </button>
-                <buttom onClick={handleInicio} class="btn btn-success"> Regresar al inicio </buttom>
+                <Link to="/paciente" className="btn btn-danger"> Regresar </Link>
             </div>
         </form>
     );

@@ -43,7 +43,9 @@ function PacienteNav() {
                                 <Link to="/paciente/verCompras">Ver Compras</Link>
                             </li>
                             <li><hr class="divider" /></li>
-                            <li><Link to="/login" >Cerrar Sesión</Link></li>
+                            <li>
+                                <Link to="/login" >Cerrar Sesión</Link>
+                            </li>
                         </ul>
                     </div>
                 </div>

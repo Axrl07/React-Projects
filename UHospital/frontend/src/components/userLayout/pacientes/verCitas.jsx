@@ -24,9 +24,8 @@ function VerCitas() {
                     <div className={styles.item} key={cita.idCita}>
                         <h1 className={styles.h1}> Estado de la Cita: {cita.estado} </h1>
                         <h2 className={styles.h2}> Por {cita.motivo} </h2>
-                        <p> Solución de la cita en la fecha {cita.fecha} y hora {cita.hora}</p>
-                        <p>id: {cita.idCita}</p>
-                        <p>Costo de la consulta: Q{cita.precioConsulta}</p>
+                        <p> La cita será el {cita.fecha} a las hora {cita.hora}</p>
+                        <p>identificador de la Cita: {cita.idCita}</p>
                     </div>
                 ))
             }

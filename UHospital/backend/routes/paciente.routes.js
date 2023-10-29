@@ -133,6 +133,20 @@ router.get('/recetas/:idUsuario', (req, res) => {
     return res.status(400).json({ error: 'No se encontraron recetas para este usuario.' });
   }
 });
+// ver estado citas
+router.get('/verCitas/:idUsuario', (req, res) => {
+  const { idUsuario } = req.params;
+
+  const citasUser = appData.citas.filter((cita) => {
+    return cita.idUsuario === idUsuario;
+  });
+
+  if (citasUser.length > 0) {
+    return res.status(200).json({ citas: citasUser });
+  } else {
+    return res.status(400).json({ error: 'No se encontraron citas para este usuario.' });
+  }
+});
 // solicitar citas
 router.post('/solicitarCitas', (req, res) => {
   const { idUsuario, fecha, hora, motivo } = req.body;
@@ -149,20 +163,6 @@ router.post('/solicitarCitas', (req, res) => {
   appData.citas.push(cita);
 
   return res.status(200).json({ msg: 'Cita solicitada con éxito' });
-});
-// ver estado citas
-router.get('/verCitas/:idUsuario', (req, res) => {
-  const { idUsuario } = req.params;
-
-  const citasUser = appData.citas.filter((cita) => {
-    return cita.idUsuario === idUsuario;
-  });
-
-  if (citasUser.length > 0) {
-    return res.status(200).json({ citas: citasUser });
-  } else {
-    return res.status(400).json({ error: 'No se encontraron citas para este usuario.' });
-  }
 });
 
 

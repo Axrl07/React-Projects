@@ -14,8 +14,8 @@ import SolicitarCita from './components/userLayout/pacientes/solicitarCita';
 import ComprasMedicamento from './components/userLayout/pacientes/comprasMedicamento';
 import VerCompras from './components/userLayout/pacientes/verCompras';
 
-// enfermeria
-// import GestionCitas from './components/userLayout/enfermeria/gestionCitas';
+//enfermeria
+import GestionCitas from './components/userLayout/enfermeria/gestionCitas';
 
 // medico
 // import AtencionCitas from './components/userLayout/medico/atencionCitas';
@@ -26,17 +26,7 @@ export const UserContext = React.createContext();
 
 // componente principal
 function App() {
-    const [usuario, setUsuario] = useState({
-        id: "e393b1cc-6a9d-4359-958b-dc46029c5912",
-        nombre: "Melisa Mishel",
-        apellido: "Melgar Rivera",
-        usuario: "melisa",
-        genero: 'f',
-        fechaNacimiento: "10-04-1980",
-        clave: "123",
-        telefono: "1234 1234",
-        tipoUsuario: "paciente"
-    });
+    const [usuario, setUsuario] = useState(null);
 
     return (
         <UserContext.Provider value={usuario} >
@@ -59,8 +49,7 @@ function App() {
 
                 // rutas enfermeria
                 <Route path="/enfermeria" element={<UserLayout />}>
-                    {/* 
-                    <Route path="gestionCitas" element={<GestionCitas />} /> */}
+                    <Route index element={<GestionCitas />} />
                 </Route>
 
                 // rutas medico
