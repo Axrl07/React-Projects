@@ -3,7 +3,8 @@ const appData = require("../appData.js");
 const router = express.Router();
 const { v4: uuidv4 } = require('uuid');
 
-// modificar datos
+// MODIFICAR
+
 router.put("/actualizarDatos", (req, res) => {
   const { id, userName, userPwd, name, lastName, birthDate, genre, cellphone,} = req.body;
 
@@ -21,6 +22,10 @@ router.put("/actualizarDatos", (req, res) => {
   usuario.telefono = cellphone;
   return res.status(200).json({ usuario: usuario });
 });
+
+
+
+//  COMPRAS
 
 // realizar compras
 router.put('/comprar', (req, res) => {
@@ -67,28 +72,13 @@ router.put('/comprar', (req, res) => {
 
   return res.status(200).json({ msg: "Compra realizada con éxito" });
 });
+// ver stock de medicamentos
 router.get('/stockMedicamentos', (req, res) => {
   const medicamentos = appData.medicamentos.filter(medicamento => {
     return medicamento.cantidadDisponible > 0;
   });
   return res.status(200).json({ medicamentos: medicamentos });
 })
-
-// obtener medicinas
-// router.get('/medicinasInfo/:idMedicamento', (req, res) => {
-//   const medicamentos = appData.medicamentos.map(medicamento => {
-//     return {
-//       idMedicamento: medicamento.idMedicamento,
-//       nombre: medicamento.nombre,
-//       precio: medicamento.precio,
-//       cantidadDisponible: medicamento.cantidadDisponible,
-//       cantidadVendida: medicamento.cantidadVendida,
-//     }
-//   });
-//   return res.status(200).json({ medicamentos: medicamentos });
-// });
-// stock de medicinas disponibles
-
 // ver compras hechas por el usuario
 router.get('/pedidos/:idUsuario', (req, res) => {
   const { idUsuario } = req.params;
@@ -103,17 +93,42 @@ router.get('/pedidos/:idUsuario', (req, res) => {
     return res.status(404).json({ error: 'No se encontraron pedidos con compras para este usuario.' });
   }
 });
+// obtener medicinas
+// router.get('/medicinasInfo/:idMedicamento', (req, res) => {
+//   const medicamentos = appData.medicamentos.map(medicamento => {
+//     return {
+//       idMedicamento: medicamento.idMedicamento,
+//       nombre: medicamento.nombre,
+//       precio: medicamento.precio,
+//       cantidadDisponible: medicamento.cantidadDisponible,
+//       cantidadVendida: medicamento.cantidadVendida,
+//     }
+//   });
+//   return res.status(200).json({ medicamentos: medicamentos });
+// });
+
+
+
+
+// RECETAS Y CITAS
 
 // ver recetas
+
 router.get('/recetas/:idUsuario', (req, res) => {
   const { idUsuario } = req.params;
 
+  const citasUser = appData.citas.filter((cita) => {
+    return cita.idUsuario === idUsuario;
+  });
+
+  const citasIds = citasUser.map((cita) => cita.idCita);
+
   const recetasUser = appData.recetas.filter((receta) => {
-    return receta.idUsuario === idUsuario;
+    return citasIds.includes(receta.idCita);
   });
 
   if (recetasUser.length > 0) {
-    return res.status(200).json({ recetas: recetas });
+    return res.status(200).json({ recetas: recetasUser });
   } else {
     return res.status(400).json({ error: 'No se encontraron recetas para este usuario.' });
   }

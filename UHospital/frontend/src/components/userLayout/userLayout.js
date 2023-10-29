@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { UserContext } from "../../App.js";
-import PacienteNav from './pacientes/pacienteNav.jsx';
-import MedicoNav from './medico/medicoNav.jsx';
-import EnfermeriaNav from './enfermeria/enfermeraNav.jsx';
+import PacienteNav from './Navbars/pacienteNav.jsx';
+import MedicoNav from './Navbars/medicoNav.jsx';
+import EnfermeriaNav from './Navbars/enfermeraNav.jsx';
 import { Outlet } from "react-router-dom";
 
 function UserLayout() {

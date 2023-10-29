@@ -67,6 +67,14 @@ citas = [
         motivo: "Dolor de cabeza",
         estado: "pendiente",
         idUsuario: "e393b1cc-6a9d-4359-958b-dc46029c5912"
+    },
+    {
+        idCita: "19af3107-d6db-492a-9c2e-bf105e7884c9",
+        fecha: "2021-07-03",
+        hora: "12:00",
+        motivo: "acidez estomacal",
+        estado: "Finalizada",
+        idUsuario: "e393b1cc-6a9d-4359-958b-dc46029c5912"
     }
 ]
 
@@ -198,6 +206,16 @@ recetas = [
         precioConsulta: 25.00,
         idCita: "19af3107-d6db-492a-9c2e-bf105e7764c9",
         idMedico: "09a70d0a-4f72-4538-90ff-3bf1bd4191a2"
+    },
+    {
+        idReceta: "03e07033-fb5f-49fc-a2ca-768bf9c8pp8a",
+        fecha: "2021-07-02",
+        hora: "11:00",
+        padecimiento: "acidez estomacal",
+        descripcion: "Tomar 3 Omeprazol",
+        precioConsulta: 30.00,
+        idCita: "19af3107-d6db-492a-9c2e-bf105e7884c9",
+        idMedico: "b57dbdf2-1834-4758-ac5b-46ff278978fd"
     }
 ]
 
