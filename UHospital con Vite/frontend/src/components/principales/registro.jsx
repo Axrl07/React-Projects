@@ -1,45 +1,35 @@
-import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useFetcher, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import styles from './registro.module.css';
+import GeneradorId from './GeneradorId';
+import { RegistroExitoso } from '../hooks/Modal';
 
-function Registro({ setusuario }) {
+function Registro() {
     const navigate = useNavigate();
     const [id, setid] = useState("");
+    const [usuarioLocal, setusuarioLocal] = useState(null);
+    const [abrir, setabrir] = useState(false);
 
     const handleLogin = () => {
         navigate("/login");
     }
-    const generarId = (length = 19) => {
-        let result = ''
-        const characters = 'abcdefghijklmnopqrstuvwxyz0123456789'
-        for (let i = 0; i < length; i++ ) {
-          if(result.length === 4 || result.length === 9 || result.length === 14){
-            result += '-'
-          }
-          result += characters.charAt(Math.floor(Math.random() * characters.length));
-          if(result.length === 19){
-            setid(result);
-            break;
-          }
-       }
-    }
     const handleRegistro = async (e) => {
         e.preventDefault();
-        const form = e.tarjet;
+        const form = e.target;
         const formData = new FormData(form);
         const res = await fetch('http://localhost:4000/auth/registro',{
             method: 'POST',
             headers:{
-                'encType': 'text/plain'
+                'encType': 'multipart/form-data'
             },
             body: formData
         })
 
         const data = await res.json();
 
-        if(data.status === 200){
-            setusuario(data.usuario);
-            navigate("/paciente");
+        if(res.status === 200){
+            setusuarioLocal(data.usuario);
+            setabrir(true);
         } else {
             alert(data.error)
         }
@@ -48,15 +38,11 @@ function Registro({ setusuario }) {
     
     return(
         <>
-            <form onSubmit={handleRegistro} className={styles.formContainer} encType='text/plain'>
+            <form onSubmit={handleRegistro} className={styles.formContainer} encType='multipart/form-data'>
                 <div>
                     <h1 className={styles.h1}> Registro de Usuario </h1>
                 </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="inputGroup-sizing-default"> ID </span>
-                    <input type="text" class="form-control" value={id} placeholder={id} name="id" required readonly />
-                    <button class="btn btn-primary" onClick={generarId}> genere un ID </button>
-                </div>
+                {<GeneradorId setid={setid} id={id}/>}
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-default"> Nombres </span>
                     <input type="text" class="form-control" name="nombre" required />
@@ -71,7 +57,7 @@ function Registro({ setusuario }) {
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-default"> Contraseña </span>
-                    <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" name="clave" required />
+                    <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" name="clave" required  maxLength={8} minLength={3}/>
                 </div>
                 <div class="row g-2">
                     <div class="col-md">
@@ -106,13 +92,10 @@ function Registro({ setusuario }) {
                 </div>
                 <div class="d-grid gap-2">
                     <button type="submit" class="btn btn-success"> Registrarse </button>
+                    <button type="button" onClick={handleLogin} class="btn btn-warning"> Regresar al Login </button>
                 </div>
             </form>
-            <div className={styles.container}>
-                <div class="d-grid gap-2">
-                    <button onClick={handleLogin} class="btn btn-warning"> Regresar al Login </button>
-                </div>
-            </div>
+            { abrir && <RegistroExitoso abrir={abrir} setabrir={setabrir} usuarioLocal={usuarioLocal} />}
         </>
     )
 }

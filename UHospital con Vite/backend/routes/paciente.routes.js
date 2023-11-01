@@ -20,6 +20,7 @@ router.put("/actualizarDatos", (req, res) => {
   usuario.fechaNacimiento = birthDate;
   usuario.genero = genre;
   usuario.telefono = cellphone;
+  
   return res.status(200).json({ usuario: usuario });
 });
 
@@ -28,35 +29,38 @@ router.put("/actualizarDatos", (req, res) => {
 //  COMPRAS
 
 // realizar compras
-router.put('/comprar', (req, res) => {
-  const { idUsuario, medicamentos } = req.body;
+router.put('/comprar:id', (req, res) => {
+  const { medicamentos } = req.body;
+  const { idUsuario } = req.params;
 
   const compras = [];
   let total = 0;
 
   medicamentos.forEach((medicamentoCompra) => {
     const { idMedicamento, cantidad } = medicamentoCompra;
-    const medicamento = appData.medicamentos.find(medicamento => medicamento.idMedicamento === idMedicamento);
+    const medicina = appData.medicamentos.find(medicamento => medicamento.idMedicamento === idMedicamento);
 
-    if (!medicamento) {
+    if (!medicina) {
       return res.status(400).json({ error: "Medicamento no encontrado" });
     }
 
-    if (medicamento.cantidadDisponible < cantidad) {
+    if (medicina.cantidadDisponible < cantidad) {
       return res.status(400).json({ error: "No hay suficiente stock" });
     }
 
-    medicamento.cantidadDisponible -= cantidad;
-    medicamento.cantidadVendida += cantidad;
+    medicina.cantidadDisponible -= cantidad;
+    medicina.cantidadVendida += cantidad;
 
     // Agregar nombre del medicamento y cantidad comprados a la lista
-    total = total + (medicamento.precio * cantidad);
+    total = total + (medicina.precio * cantidad);
     compras.push({
-      nombreMedicamento: medicamento.nombre,
-      precioUnitario: medicamento.precio,
+      nombreMedicamento: medicina.nombre,
+      precioUnitario: medicina.precio,
       cantidadComprada: cantidad,
-      subtotal: medicamento.precio * cantidad,
+      subtotal: medicina.precio * cantidad,
     });
+
+    return res.status(200).json({ msg: "Compra realizada con éxito" });
   });
 
   // Registrar la compra
@@ -93,27 +97,11 @@ router.get('/pedidos/:idUsuario', (req, res) => {
     return res.status(404).json({ error: 'No se encontraron pedidos con compras para este usuario.' });
   }
 });
-// obtener medicinas
-// router.get('/medicinasInfo/:idMedicamento', (req, res) => {
-//   const medicamentos = appData.medicamentos.map(medicamento => {
-//     return {
-//       idMedicamento: medicamento.idMedicamento,
-//       nombre: medicamento.nombre,
-//       precio: medicamento.precio,
-//       cantidadDisponible: medicamento.cantidadDisponible,
-//       cantidadVendida: medicamento.cantidadVendida,
-//     }
-//   });
-//   return res.status(200).json({ medicamentos: medicamentos });
-// });
-
-
 
 
 // RECETAS Y CITAS
 
 // ver recetas
-
 router.get('/recetas/:idUsuario', (req, res) => {
   const { idUsuario } = req.params;
 

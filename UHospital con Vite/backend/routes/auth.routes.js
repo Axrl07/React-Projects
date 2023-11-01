@@ -18,7 +18,7 @@ router.post("/login", (req, res) => {
 router.post("/registro", (req, res) => {
   const {id, nombreUsuario, clave, nombre, apellido, fechaNacimiento, genero, telefono} = req.body;
   for (u of appData.usuarios) {
-    if (u.usuario === nombreUsuario) {
+    if (u.usuario === nombreUsuario || u.id === id) {
       return res.status(400).json({ error: "el usuario ya existe" });
     }
   }
@@ -34,7 +34,7 @@ router.post("/registro", (req, res) => {
     departamento: "pacientes"
   });
   for(u of appData.usuarios){
-    if(u.usuario === nombreUsuario){
+    if(u.id === id){
       return res.status(200).json({ usuario: u });
     }
   }
@@ -49,6 +49,6 @@ router.get('/data/:departamento', (req, res) => {
   } else {
     return res.status(400).json({ error: "no se encontraron pacientes" })
   }
-});  
+});
 
 module.exports = router;
