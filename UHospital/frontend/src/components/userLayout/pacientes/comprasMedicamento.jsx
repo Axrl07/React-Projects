@@ -1,10 +1,12 @@
 import React, { useContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../../App.js";
 import styles from "./comprasMedicamento.module.css";
 import MedicamentoItem from "./MedicamentoItem.jsx";
 
 function ComprasMedicamento() {
   const usuario = useContext(UserContext);
+  const navigate = useNavigate();
   const [medicamentos, setMedicamentos] = useState([]);
   const [total, setTotal] = useState(0);
   const [compraData, setCompraData] = useState({
@@ -14,10 +16,14 @@ function ComprasMedicamento() {
 
   // Obtiene los medicamentos del stock
   const getMedicamentos = async () => {
-    const response = await fetch('http://localhost:4000/paciente/stockMedicamentos');
+    const response = await fetch('http://localhost:4000/paciente/stock');
     const data = await response.json();
     setMedicamentos(data.medicamentos);
   }
+  
+  useEffect(() => {
+    getMedicamentos();
+  }, []);
   
   const handleComprar = async (e) => {
     e.preventDefault();
@@ -26,26 +32,25 @@ function ComprasMedicamento() {
       cantidad: medicamento.cantidadSeleccionada,
     }));
 
-    setCompraData({ ...compraData, medicamentos: medicamentosSeleccionados,});
+    const comp = { ...compraData, medicamentos: medicamentosSeleccionados, }
+    setCompraData(comp);
     const response = await fetch("http://localhost:4000/paciente/comprar", {
-      method: "PUT",
-      headers: {
+        method: "PUT",
+        headers: {
         "Content-Type": "application/json",
-      },
-      body: JSON.stringify(compraData),
+        },
+        body: JSON.stringify(comp),
     });
 
     const res = await response.json();
-    if (res.status === 200) {
+    if (response.status === 200) {
       alert(res.msg);
+      navigate("/paciente/verCompras");
     } else {
       alert(res.error);
     }
   }
 
-  useEffect(() => {
-    getMedicamentos();
-  }, []);
 
   // Calcula el total cada vez que cambian las cantidades seleccionadas
   useEffect(() => {

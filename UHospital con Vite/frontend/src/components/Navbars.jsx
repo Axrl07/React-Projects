@@ -1,7 +1,7 @@
 import { useContext} from 'react';
-import { UserContext } from '../../Rutas.routes';
+import { UserContext } from '../App';
 import { Link } from 'react-router-dom';
-import styles from './Navbars.module.css';
+import styles from '../styles/Navbars.module.css';
 
 export const PacientesNavbar = () => {
     const usuario = useContext(UserContext);
@@ -23,7 +23,7 @@ export const PacientesNavbar = () => {
                                 <Link className={styles.link} to="/pacientes">Inicio</Link>
                             </li>
                             <li>
-                                <Link className={styles.link} to="/pacientes/modificarUsuario" >Modificar perfil</Link>
+                                <Link className={styles.link} to="/pacientes/ActualizarDatos" >Modificar perfil</Link>
                             </li>
                             <li><hr class="divider" /></li>
                             <li class="nav-item">
@@ -72,28 +72,18 @@ export const EnfermeriaNavbar = () => {
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li class="nav-item">
-                                <Link className={styles.link} to="/pacientes">Inicio</Link>
+                                <Link className={styles.link} to="/enfermeria">Inicio</Link>
                             </li>
                             <li>
-                                <Link className={styles.link} to="/pacientes/modificarUsuario" >Modificar perfil</Link>
+                                <Link className={styles.link} to="/enfermeria/ActualizarDatos" >Modificar perfil</Link>
                             </li>
                             <li><hr class="divider" /></li>
                             <li class="nav-item">
-                                <Link className={styles.link} to="/pacientes/verRecetas">Ver Recetas</Link>
+                                <Link className={styles.link} to="/enfermeria/gestionarCitas">Gestión de Citas</Link>
                             </li>
                             <li><hr class="divider" /></li>
                             <li class="nav-item">
-                                <Link className={styles.link} to="/pacientes/SolicitarCita">Solicitar una Cita</Link>
-                            </li>
-                            <li class="nav-item">
-                                <Link className={styles.link} to="/pacientes/VerCitas">Ver Citas</Link>
-                            </li>
-                            <li><hr class="divider" /></li>
-                            <li class="nav-item">
-                                <Link className={styles.link} to="/pacientes/comprasMedicamento">Comprar Medicamentos</Link>
-                            </li>
-                            <li class="nav-item">
-                                <Link className={styles.link} to="/pacientes/verCompras">Ver Compras</Link>
+                                <Link className={styles.link} to="/enfermeria/reportes">Reportes</Link>
                             </li>
                             <li><hr class="divider" /></li>
                             <li>
@@ -124,28 +114,14 @@ export const MedicosNavbar = () => {
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li class="nav-item">
-                                <Link className={styles.link} to="/pacientes">Inicio</Link>
+                                <Link className={styles.link} to="/medicos">Inicio</Link>
                             </li>
                             <li>
-                                <Link className={styles.link} to="/pacientes/modificarUsuario" >Modificar perfil</Link>
+                                <Link className={styles.link} to="/medicos/ActualizarDatos" >Modificar perfil</Link>
                             </li>
                             <li><hr class="divider" /></li>
                             <li class="nav-item">
-                                <Link className={styles.link} to="/pacientes/verRecetas">Ver Recetas</Link>
-                            </li>
-                            <li><hr class="divider" /></li>
-                            <li class="nav-item">
-                                <Link className={styles.link} to="/pacientes/SolicitarCita">Solicitar una Cita</Link>
-                            </li>
-                            <li class="nav-item">
-                                <Link className={styles.link} to="/pacientes/VerCitas">Ver Citas</Link>
-                            </li>
-                            <li><hr class="divider" /></li>
-                            <li class="nav-item">
-                                <Link className={styles.link} to="/pacientes/comprasMedicamento">Comprar Medicamentos</Link>
-                            </li>
-                            <li class="nav-item">
-                                <Link className={styles.link} to="/pacientes/verCompras">Ver Compras</Link>
+                                <Link className={styles.link} to="/medicos/atencionCitas">Atender Citas</Link>
                             </li>
                             <li><hr class="divider" /></li>
                             <li>

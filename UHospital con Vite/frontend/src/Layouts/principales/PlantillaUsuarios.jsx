@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { UserContext } from "../../Rutas.routes";
+import { UserContext } from "../../App";
 import { Outlet } from "react-router-dom";
-import { PacientesNavbar, EnfermeriaNavbar, MedicosNavbar } from "../hooks/Navbars";
+import { PacientesNavbar, EnfermeriaNavbar, MedicosNavbar } from "../../components/Navbars";
 
 function PlantillaUsuarios() {
     const usuario = useContext(UserContext);

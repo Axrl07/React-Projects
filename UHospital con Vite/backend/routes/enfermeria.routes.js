@@ -3,9 +3,7 @@ const appData = require("../appData.js");
 const router = express.Router();
 
 router.get('/obtenerCitas', (req, res) => {
-    const citas = appData.citas.filter(cita => {
-        return cita.estado !== "finalizada";
-    });
+    const citas = appData.citas
 
     if (citas.length > 0) {
         return res.status(200).json({ citas: citas });
@@ -48,12 +46,12 @@ router.get('/medicamentosVendidos', (req, res) => {
     }
 });
 
-router.get('/medicosCitas', (req, res) => {
+router.get('/NumCitasFinalizadas', (req, res) => {
     const medicos = appData.usuarios.filter(usuario => {
-        return usuario.tipoUsuario === "medico";
+        return usuario.departamento === "medicos";
     });
     const citas = appData.citas;
-    const medicosCitas = [];
+    const numCitas = [];
     medicos.forEach(med => {
         let contador = 0;
         citas.forEach(cita => {
@@ -62,12 +60,12 @@ router.get('/medicosCitas', (req, res) => {
             }
         });
         const medicoCita = { nombre: med.nombre, cantidad: contador };
-        medicosCitas.push(medicoCita);
+        numCitas.push(medicoCita);
     });
-    medicosCitas.sort((a, b) => b.cantidad - a.cantidad);
+    numCitas.sort((a, b) => b.cantidad - a.cantidad);
 
-    if (medicosCitas.length > 0) {
-        return res.status(200).json({ medicosCitas: medicosCitas });
+    if (numCitas.length > 0) {
+        return res.status(200).json({ numCitas: numCitas });
     } else {
         return res.status(400).json({ error: "No se encontraron medicos." });
     }

@@ -27,15 +27,15 @@ export const UserContext = React.createContext();
 // componente principal
 function App() {
     const [usuario, setUsuario] = useState({
-        id: "dd8cc520-58fc-45b9-a198-9e18c4f4cb9f",
-        nombre: "Maria Fernanda",
-        apellido: "Choc Choc",
-        usuario: "f.maria",
+        id: "e393b1cc-6a9d-4359-958b-dc46029c5912",
+        nombre: "Melisa Mishel",
+        apellido: "Melgar Rivera",
+        usuario: "melisa",
         genero: 'f',
-        fechaNacimiento: "05-01-2000",
+        fechaNacimiento: "10-04-1980",
         clave: "123",
-        telefono: "9898 0001",
-        tipoUsuario: "enfermeria"
+        telefono: "1234 1234",
+        tipoUsuario: "paciente"
     });
 
     return (

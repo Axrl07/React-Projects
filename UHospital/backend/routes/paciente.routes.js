@@ -72,6 +72,7 @@ router.put('/comprar', (req, res) => {
 
   return res.status(200).json({ msg: "Compra realizada con éxito" });
 });
+
 // ver stock de medicamentos
 router.get('/stockMedicamentos', (req, res) => {
   const medicamentos = appData.medicamentos.filter(medicamento => {
@@ -93,27 +94,6 @@ router.get('/pedidos/:idUsuario', (req, res) => {
     return res.status(404).json({ error: 'No se encontraron pedidos con compras para este usuario.' });
   }
 });
-// obtener medicinas
-// router.get('/medicinasInfo/:idMedicamento', (req, res) => {
-//   const medicamentos = appData.medicamentos.map(medicamento => {
-//     return {
-//       idMedicamento: medicamento.idMedicamento,
-//       nombre: medicamento.nombre,
-//       precio: medicamento.precio,
-//       cantidadDisponible: medicamento.cantidadDisponible,
-//       cantidadVendida: medicamento.cantidadVendida,
-//     }
-//   });
-//   return res.status(200).json({ medicamentos: medicamentos });
-// });
-
-
-
-
-// RECETAS Y CITAS
-
-// ver recetas
-
 router.get('/recetas/:idUsuario', (req, res) => {
   const { idUsuario } = req.params;
 

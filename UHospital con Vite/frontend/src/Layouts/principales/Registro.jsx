@@ -1,8 +1,8 @@
-import { useFetcher, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import styles from './registro.module.css';
-import GeneradorId from './GeneradorId';
-import { RegistroExitoso } from '../hooks/Modal';
+import styles from '../../styles/Registro.module.css';
+import GeneradorId from '../../components/GeneradorId';
+import { RegistroExitoso } from '../../components/Modal';
 
 function Registro() {
     const navigate = useNavigate();
@@ -17,7 +17,7 @@ function Registro() {
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
-        const res = await fetch('http://localhost:4000/auth/registro',{
+        const res = await fetch('http://localhost:5555/auth/registro',{
             method: 'POST',
             headers:{
                 'encType': 'multipart/form-data'
@@ -33,7 +33,6 @@ function Registro() {
         } else {
             alert(data.error)
         }
-
     }
     
     return(
@@ -44,30 +43,30 @@ function Registro() {
                 </div>
                 {<GeneradorId setid={setid} id={id}/>}
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="inputGroup-sizing-default"> Nombres </span>
+                    <span class="input-group-text"> Nombres </span>
                     <input type="text" class="form-control" name="nombre" required />
                 </div>
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="inputGroup-sizing-default"> Apellidos </span>
+                    <span class="input-group-text"> Apellidos </span>
                     <input type="text" class="form-control" name="apellido" required />
                 </div>
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="inputGroup-sizing-default"> Nombre de Usuario </span>
+                    <span class="input-group-text"> Nombre de Usuario </span>
                     <input type="text" class="form-control" name="nombreUsuario" required />
                 </div>
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="inputGroup-sizing-default"> Contraseña </span>
-                    <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" name="clave" required  maxLength={8} minLength={3}/>
+                    <span class="input-group-text"> Contraseña </span>
+                    <input type="password" class="form-control" name="clave" required  maxLength={8} minLength={3}/>
                 </div>
                 <div class="row g-2">
                     <div class="col-md">
                         <div class="form-imput-group mb-3">
-                            <span class="input-group-text" id="inputGroup-sizing-default"> Genero </span>
+                            <span class="input-group-text"> Genero </span>
                         </div>
                     </div>
                     <div class="col-md">
                         <div class="row g-2">
-                            <select class="form-select" aria-label="Default select example" name="genero" required>
+                            <select class="form-select" name="genero" required>
                                 <option value="masculino" > Masculino </option>
                                 <option value="femenino" > Femenino </option>
                             </select>
@@ -77,18 +76,34 @@ function Registro() {
                 <div class="row g-2">
                     <div class="col-md">
                         <div class="form-imput-group mb-3">
-                            <span class="input-group-text" id="inputGroup-sizing-default"> Fecha de nacimiento </span>
+                            <span class="input-group-text"> Fecha de nacimiento </span>
                         </div>
                     </div>
                     <div class="col-md">
                         <div class="row g-2">
-                            <input type="date" id="inputDate" class="form-control" aria-describedby="date" name="fechaNacimiento" required />
+                            <input type="date" class="form-control" name="fechaNacimiento" required />
                         </div>
                     </div>
                 </div>
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="inputGroup-sizing-default"> Telefono Celular </span>
-                    <input type="text" class="form-control" aria-label="Sizing example input" name="telefono" required />
+                    <span class="input-group-text"> Telefono Celular </span>
+                    <input type="text" class="form-control" name="telefono" required />
+                </div>
+                <div class="row g-2">
+                    <div class="col-md">
+                        <div class="form-imput-group mb-3">
+                            <span class="input-group-text"> Seleccione el departamento al que desea pertenecer </span>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="row g-2">
+                            <select class="form-select" name="departamento" required>
+                                <option value="pacientes" > pacientes </option>
+                                <option value="enfermeria" > enfermeria </option>
+                                <option value="medicos" > medicos </option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 <div class="d-grid gap-2">
                     <button type="submit" class="btn btn-success"> Registrarse </button>

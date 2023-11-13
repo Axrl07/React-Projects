@@ -15,33 +15,11 @@ usuarios = [
         id: "b57dbdf2-1834-4758-ac5b-46ff278978fd",
         nombre: "Samantha Abigail",
         apellido: "Gonzales Milla",
-        usuario: "m.samantha",
+        usuario: "samantha",
         genero: "femenino",
         fechaNacimiento: "20-06-1999",
-        clave: "medicoSamantha",
+        clave: "123",
         telefono: "1010 0002",
-        departamento: "medicos"
-    },
-    {
-        id: "09aaad00-4f72-4538-90ff-3bf1bd4191a2",
-        nombre: "Juan Luis",
-        apellido: "Guerra",
-        usuario: "luis",
-        genero: "masculino",
-        clave: "luis",
-        fechaNacimiento: "01-05-2000",
-        telefono: "2222 0000",
-        departamento: "medicos"
-    },
-    {
-        id: "b57dbdf2-1834-4758-ac5b-46ff278978fd",
-        nombre: "Linda",
-        apellido: "Ortega",
-        usuario: "linda",
-        genero: "femenino",
-        fechaNacimiento: "20-06-1999",
-        clave: "lindaMedico",
-        telefono: "5566 8899",
         departamento: "medicos"
     },
     // enfermeria
@@ -49,7 +27,7 @@ usuarios = [
         id: "dd8cc520-58fc-45b9-a198-9e18c4f4cb9f",
         nombre: "Maria Fernanda",
         apellido: "Choc Choc",
-        usuario: "f.maria",
+        usuario: "maria",
         genero: "femenino",
         fechaNacimiento: "05-01-2000",
         clave: "123",
@@ -60,7 +38,7 @@ usuarios = [
         id: "c66b8a2c-fdb3-492d-a1b6-210f7c1b8459",
         nombre: "Jose Daniel",
         apellido: "Alvarado Fajardo",
-        usuario: "f.jose",
+        usuario: "jose",
         genero: "masculino",
         fechaNacimiento: "31-12-1999",
         clave: "123",
@@ -77,6 +55,17 @@ usuarios = [
         fechaNacimiento: "10-04-1980",
         clave: "123",
         telefono: "1234 1234",
+        departamento: "pacientes"
+    },
+    {
+        id: "09aaad00-4f72-4538-90ff-3bf1bd4191a2",
+        nombre: "Juan Luis",
+        apellido: "Guerra",
+        usuario: "juan",
+        genero: "masculino",
+        clave: "luis",
+        fechaNacimiento: "01-05-2000",
+        telefono: "2222 0000",
         departamento: "pacientes"
     }
 ]
@@ -96,9 +85,9 @@ citas = [
         fecha: "2021-07-03",
         hora: "12:00",
         motivo: "acidez estomacal",
-        estado: "aceptada",
+        estado: "finalizada",
         idUsuario: "e393b1cc-6a9d-4359-958b-dc46029c5912",
-        idMedico: "09a70d0a-4f72-4538-90ff-3bf1bd4191a2"
+        idMedico: "b57dbdf2-1834-4758-ac5b-46ff278978fd"
     },
     {
         idCita: "19af3107-d6db-jklñ-9c2e-bf105e7764c9",
@@ -107,7 +96,7 @@ citas = [
         motivo: "diarrea",
         estado: "aceptada",
         idUsuario: "e393b1cc-6a9d-4359-958b-dc46029c5912",
-        idMedico: "09a70d0a-4f72-4538-90ff-3bf1bd4191a2"
+        idMedico: "b57dbdf2-1834-4758-ac5b-46ff278978fd"
     },
     {
         idCita: "19af3107-fdaa-492a-9c2e-bf105e7884c9",

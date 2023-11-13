@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import styles from './login.module.css';
+import styles from '../../styles/Login.module.css';
 
 function Login({setusuario}) {
     const navigate = useNavigate();
@@ -11,7 +11,7 @@ function Login({setusuario}) {
         const form = e.target;
         const formData = new FormData(form);
 
-        const res = await fetch('http://localhost:4000/auth/login', {
+        const res = await fetch('http://localhost:5555/auth/login', {
             method: 'POST',
             headers:{
                 'encType': 'multipart/form-data'

@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { UserContext } from "../../Rutas.routes";
-import styles from "./VerUsuario.module.css";
+import { UserContext } from "../../App";
+import styles from "../../styles/VerUsuario.module.css";
 
 function VerUsuario() {
     const usuario = useContext(UserContext);

@@ -1,0 +1,11 @@
+pacientes:
+
+falta el apartado de compras
+
+enfermeria:
+
+falta reportes y gestion de citas
+
+medicos:
+
+falta creacion de recetas
