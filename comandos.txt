@@ -1,0 +1,10 @@
+crear proyecto react con vite:
+npm create vite@latest
+npm install react-router-dom
+
+
+React snippets:
+ffc
+usf crear state
+sfc arrow component
+
